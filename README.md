@@ -24,12 +24,13 @@ This program reads a single Telecommand packet from a binary file (`tc_packet.bi
 ```
 **Expected output format:**
 ```
-The parsed TC packet information (Packet Total Length = 40):
-  Application Process ID : 0011110011
+The parsed TC packet information: (Packet Total Length = 40):
+  Application Process ID : 00111100011
   Sequence Count : 8
-  Service Type : 11110001
+  Service Type: 11110001
   Service Subtype: 00011001
-  Application Data: 0x3F800000...
+  Application Data: 0x3F80000040000000404000004080000040A0000040C0000040E00000
+
 ```
 
 #### **Run the TC_Stream Parser**
@@ -44,16 +45,16 @@ Extracted 2 TC packets.
 Packet 1 (Packet Total Length = 13):
   Application Process ID: 00110010100
   Sequence Count: 0
-  Service Type: 1100100
-  Service Subtype: 0000001
+  Service Type: 11001000
+  Service Subtype: 00000001
   Application Data: 0x00
-
 Packet 2 (Packet Total Length = 13):
   Application Process ID: 00110010100
   Sequence Count: 1
-  Service Type: 1100100
+  Service Type: 11001000
   Service Subtype: 00000011
   Application Data: 0x00
+
 ```
 
 ## **2. Troubleshooting**
