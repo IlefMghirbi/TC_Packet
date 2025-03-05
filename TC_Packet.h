@@ -31,7 +31,12 @@ struct Packet_Information {
     uint16_t    length;
     uint8_t     service_type;
     uint8_t     service_subtype;
-    std::string application_data;
+    std::vector<uint8_t> application_data;
+};
+
+struct TC_Packet {
+    Packet_Information packet_information;
+    std::vector<uint8_t> data; 
 };
 
 uint16_t extractAppProcessID (const std::vector<uint8_t> buffer){
@@ -45,7 +50,7 @@ uint16_t extractAppProcessID (const std::vector<uint8_t> buffer){
     uint16_t output = (MSB << 8) | LSB;
 
     return output;
-}
+} 
 
 uint16_t extractSeqCount (const std::vector<uint8_t> buffer){
     if (buffer.size() < 4) {
