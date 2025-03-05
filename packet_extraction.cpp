@@ -19,8 +19,8 @@ uint16_t extractSeqCount(const std::vector<uint8_t>& buffer) {
         std::cerr << "Buffer size error" << std::endl;
     }
     // sequence count is 14bits long: splitted between the 3rd and 4th bytes
-    // big endian: get MSB from the 3rd byte, shift by 8bits, and combine 
-    // with the LSB from the 4th byte
+    // big endian according to the provided documentation: 
+    // get MSB from the 3rd byte, shift by 8bits, and combine     // with the LSB from the 4th byte
     // use a mask to only keep sequence count bits
     uint8_t MSB = buffer[2] & 0b00111111;
     uint8_t LSB = buffer[3];
