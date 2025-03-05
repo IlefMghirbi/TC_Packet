@@ -1,6 +1,7 @@
 #ifndef PACKET_EXTRACTION_H
 #define PACKET_EXTRACTION_H
 
+#include <iostream>
 #include <vector>
 #include <cstdint>
 #include <stdexcept>
