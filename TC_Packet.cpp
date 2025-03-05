@@ -19,21 +19,20 @@ int main() {
     // read the packet and write the raw data into the buffer
     std::vector<uint8_t> buffer((std::istreambuf_iterator<char>(file)), {});
     
-    // get the packet information
+    
     packet_information.application_process_ID = extractAppProcessID(buffer);
     packet_information.seq_count = extractSeqCount(buffer);
-    packet_information.length = extractPacketLength(buffer) + 1;
+    packet_information.length = extractPacketLength(buffer) + 1 + 6;
     packet_information.service_type = extractServiceType(buffer);
     packet_information.service_subtype = extractServiceSubtype(buffer);
     packet_information.application_data = extractApplicationData(buffer);
 
-    // log the extracted information of the TC packet
-    std::cout << "The parsed TC packet information: "<< std::endl;
+    std::cout << "The parsed TC packet information: (Packet Total Length = "<< packet_information.length <<"):"<< std::endl;
     std::cout << "  Application Process ID : " << std::bitset<11>(packet_information.application_process_ID) << std::endl;
     std::cout << "  Sequence Count : " << packet_information.seq_count << std::endl;
-    std::cout << "  Packet Length : "<< packet_information.length << std::endl;
-    std::cout << "  Service type and service subtype: "<< std::bitset<8>(packet_information.service_type) << std::endl;
-    std::cout << "  Service type and service subtype: "<< std::bitset<8>(packet_information.service_subtype)<< std::endl;
+    //std::cout << "  Packet Length : "<< packet_information.length << std::endl;
+    std::cout << "  Service Type: "<< std::bitset<8>(packet_information.service_type) << std::endl;
+    std::cout << "  Service Subtype: "<< std::bitset<8>(packet_information.service_subtype)<< std::endl;
     std::cout << "  Application Data: 0x";
     for (uint8_t byte : packet_information.application_data) {
         printf("%02X", byte);
